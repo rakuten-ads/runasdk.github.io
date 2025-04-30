@@ -1,155 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <base href="/runasdk.github.io/">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RUNA SDK Documentation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Select Your Platform</title>
   <style>
-    /* Tailwind-inspired styles */
     :root {
-      --primary: #0066cc;
-      --primary-dark: #0052a3;
-      --bg-gray: #f8fafc;
-      --text: #1e293b;
-      --gray-light: #e2e8f0;
+      --primary-color: #1e88e5;
+      --bg-color: #f4f6f8;
+      --card-bg: #fff;
+      --card-radius: 8px;
+      --card-shadow: rgba(0,0,0,0.1) 0px 4px 6px;
     }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: var(--text);
-      background-color: var(--bg-gray);
-      line-height: 1.5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-color);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    
-    .container {
-      max-width: 1024px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-    
-    .card {
-      background-color: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      padding: 2rem;
-      margin-top: 2rem;
-    }
-    
     header {
       text-align: center;
-      margin-bottom: 2rem;
+      padding: 2rem 1rem;
     }
-    
-    h1 {
+    header h1 {
       font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 1rem;
+      color: var(--primary-color);
     }
-    
-    .header-description {
-      color: #64748b;
-      font-size: 1.125rem;
-      max-width: 36rem;
-      margin: 0 auto;
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #555;
     }
-    
-    .module-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
+    .cards {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 1rem;
     }
-    
-    .module-card {
-      background-color: white;
-      border-radius: 0.375rem;
-      border: 1px solid var(--gray-light);
-      padding: 1.5rem;
-      transition: all 0.2s ease;
-    }
-    
-    .module-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-    
-    .module-link {
-      display: block;
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
       text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
+      color: inherit;
+      width: 200px;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: rgba(0,0,0,0.15) 0px 8px 12px;
+    }
+    .card .icon {
+      font-size: 3rem;
+    }
+    .card h2 {
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
       font-size: 1.25rem;
-      margin-bottom: 0.75rem;
     }
-    
-    .module-link:hover {
-      color: var(--primary-dark);
-    }
-    
-    .module-description {
-      color: #64748b;
-      font-size: 0.875rem;
-    }
-    
-    footer {
-      margin-top: 3rem;
+    .card p {
+      font-size: 0.9rem;
+      color: #666;
       text-align: center;
-      color: #64748b;
-      font-size: 0.875rem;
     }
-    
-    @media (max-width: 640px) {
-      .card {
-        padding: 1.5rem;
-      }
-      
-      .module-grid {
-        grid-template-columns: 1fr;
-      }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #999;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>RUNA SDK Documentation</h1>
-      <p class="header-description">Comprehensive guides and references for integrating RUNA advertising solutions</p>
-    </header>
-    
-    <div class="card">
-      <div class="module-grid">
-        <div class="module-card">
-          <a href="RUNACore/documentation/runacore" class="module-link">Core Module</a>
-          <p class="module-description">Essential components and utilities for all RUNA SDK integrations</p>
-        </div>
-        
-        <div class="module-card">
-          <a href="RUNABanner/documentation/runabanner/" class="module-link">Banner Module</a>
-          <p class="module-description">Display various banner ad formats in your application</p>
-        </div>
-        
-        <div class="module-card">
-          <a href="RUNAMediationAdapter/documentation/runamediationadapter/" class="module-link">Mediation Adapter Module</a>
-          <p class="module-description">Integrate RUNA with third-party ad mediation platforms</p>
-        </div>
-        
-        <div class="module-card">
-          <a href="RUNAOMAdapter/documentation/runaomadapter" class="module-link">OM Adapter Module</a>
-          <p class="module-description">Open Measurement support for viewability verification</p>
-        </div>
-      </div>
-    </div>
-    
-    <footer>
-      <p>© 2025 RUNA SDK – Developer Documentation</p>
-    </footer>
-  </div>
+
+  <header>
+    <h1>Select Your SDK Platform</h1>
+  </header>
+
+  <main class="cards">
+    <a href="./iOS/" class="card">
+      <div class="icon">🍎</div>
+      <h2>iOS</h2>
+      <p>RUNA iOS SDK</p>
+    </a>
+
+    <a href="./Android/" class="card">
+      <div class="icon">🤖</div>
+      <h2>Android</h2>
+      <p>RUNA Android SDK</p>
+    </a>
+  </main>
 </body>
 </html>
