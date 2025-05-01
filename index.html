@@ -4,102 +4,292 @@
   <base href="/runasdk.github.io/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Select Your Platform</title>
+  <title>RUNA SDK - Platform Selection</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --primary-color: #1e88e5;
-      --bg-color: #f4f6f8;
-      --card-bg: #fff;
-      --card-radius: 8px;
-      --card-shadow: rgba(0,0,0,0.1) 0px 4px 6px;
+      --primary-color: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --card-radius: 12px;
+      --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --accent-color: #f59e0b;
+      --ios-color: #007aff;
+      --android-color: #3ddc84;
     }
+    
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg-color);
-      color: #333;
+      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+      background-size: 40px 40px;
+      color: var(--text-primary);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      line-height: 1.6;
     }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+    
     header {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem 2rem;
+      position: relative;
     }
-    header h1 {
-      font-size: 2rem;
+    
+    .logo-container {
+      margin-bottom: 1.5rem;
+    }
+    
+    .logo {
+      height: 60px;
+      margin: 0 auto;
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 800;
       color: var(--primary-color);
+      letter-spacing: -1px;
     }
+    
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+    }
+    
     header p {
       margin-top: 0.5rem;
-      font-size: 1rem;
-      color: #555;
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
     }
-    .cards {
+    
+    .content {
       flex: 1;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      padding: 1rem;
+      flex-direction: column;
     }
+    
+    .cards-container {
+      flex: 1;
+      padding: 2rem 1rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    
     .card {
       background: var(--card-bg);
       border-radius: var(--card-radius);
       box-shadow: var(--card-shadow);
       text-decoration: none;
       color: inherit;
-      width: 200px;
-      padding: 2rem 1rem;
+      width: 280px;
+      height: 300px;
+      padding: 2.5rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 0.2s, box-shadow 0.2s;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
     }
+    
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: rgba(0,0,0,0.15) 0px 8px 12px;
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
-    .card .icon {
+    
+    .ios-logo {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .ios-logo::before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #5EFCE8 10%, #007AFF 100%);
+      border-radius: 20px;
+      transform: rotate(45deg);
+      box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
+    }
+    
+    .ios-logo i {
+      color: white;
       font-size: 3rem;
+      position: relative;
+      z-index: 1;
     }
+    
+    .android-logo {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .android-logo::before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #A5FECB 10%, #3DDC84 100%);
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(61, 220, 132, 0.3);
+    }
+    
+    .android-logo i {
+      color: white;
+      font-size: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .card:hover .ios-logo,
+    .card:hover .android-logo {
+      transform: scale(1.1);
+    }
+    
     .card h2 {
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
     }
+    
     .card p {
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 1rem;
+      color: var(--text-secondary);
       text-align: center;
+      line-height: 1.5;
     }
+    
+    .card.ios {
+      border-bottom: 4px solid var(--ios-color);
+    }
+    
+    .card.android {
+      border-bottom: 4px solid var(--android-color);
+    }
+    
     footer {
       text-align: center;
-      padding: 1rem;
-      font-size: 0.8rem;
-      color: #999;
+      padding: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      background-color: white;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      margin-top: auto;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .cards {
+        gap: 1.5rem;
+      }
+      
+      .card {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem 1.5rem;
+      }
+      
+      .logo {
+        height: 50px;
+      }
+      
+      header h1 {
+        font-size: 1.75rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="content">
+    <div class="container">
+      <header>
+        <div class="logo-container">
+          <div class="logo">RUNA</div>
+        </div>
+        <h1>Select Your SDK Platform</h1>
+        <p>Choose the platform you want to integrate with our powerful RUNA SDK</p>
+      </header>
 
-  <header>
-    <h1>Select Your SDK Platform</h1>
-  </header>
+      <main class="cards-container">
+        <div class="cards">
+          <a href="./iOS/" class="card ios">
+            <div class="ios-logo">
+              <i class="fab fa-apple"></i>
+            </div>
+            <h2>iOS</h2>
+            <p>iOS RUNA SDK Documentation</p>
+          </a>
 
-  <main class="cards">
-    <a href="./iOS/" class="card">
-      <div class="icon">🍎</div>
-      <h2>iOS</h2>
-      <p>RUNA iOS SDK</p>
-    </a>
-
-    <a href="./Android/" class="card">
-      <div class="icon">🤖</div>
-      <h2>Android</h2>
-      <p>RUNA Android SDK</p>
-    </a>
-  </main>
+          <a href="./Android/" class="card android">
+            <div class="android-logo">
+              <i class="fab fa-android"></i>
+            </div>
+            <h2>Android</h2>
+            <p>Android RUNA SDK Documentation</p>
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <p>© 2025 RUNA SDK. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
